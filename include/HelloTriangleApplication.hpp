@@ -5,9 +5,20 @@
 #include <stdexcept>
 #include <cstdlib>
 #include <vector>
+#include <cstring>
 
 const uint32_t WIDTH = 800;
 const uint32_t HEIGHT = 600;
+
+const std::vector<const char*> validationLayers = {
+        "VK_LAYER_KHRONOS_validation"
+};
+
+#ifdef NDEBUG
+    const bool enableValidationLayers = false;
+#else
+    const bool enableValidationLayers = true;
+#endif
 
 class HelloTriangleApplication
 {
@@ -39,6 +50,11 @@ private:
 
     void createInstance()
     {
+        if(enableValidationLayers && !checkValidationLayerSupport())
+        {
+            throw std::runtime_error("validation layers requested, but not available!");
+        }
+
         VkApplicationInfo appInfo{}; // optional
         appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO; // This is also one of the many structs with a pNext member that can point to extension information in the future.
         // appInfo.pNext = nullptr; default value is nullptr
@@ -56,7 +72,15 @@ private:
         const char** glfwExtensions;
 
         glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
-        createInfo.enabledLayerCount = 0; // determine validation layers
+        if(enableValidationLayers)
+        {
+            createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+            createInfo.ppEnabledLayerNames = validationLayers.data();
+        }
+        else
+        {
+            createInfo.enabledLayerCount = 0;
+        }
 
         std::vector<const char*> requiredExtensions;
 
@@ -106,6 +130,52 @@ private:
         glfwDestroyWindow(window);
 
         glfwTerminate();
+    }
+
+    bool checkValidationLayerSupport()
+    {
+        uint32_t layerCount;
+        vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+
+        std::vector<VkLayerProperties> availableLayers(layerCount);
+        vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
+
+        for(const char* layerName : validationLayers)
+        {
+            bool layerFound = false;
+
+            for(const auto& layerProperties: availableLayers)
+            {
+                if(strcmp(layerName, layerProperties.layerName) == 0)
+                {
+                    layerFound = true;
+                    break;
+                }
+            }
+
+            if(!layerFound)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    std::vector<const char*> getRequiredExtensions()
+    {
+        uint32_t glfwExtensionCount = 0;
+        const char** glfwExtensions;
+        glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+
+        std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
+
+        if(enableValidationLayers)
+        {
+            extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
+        }
+
+        return extensions;
     }
 
 private:
