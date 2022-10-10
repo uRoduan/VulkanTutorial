@@ -17,6 +17,6 @@ set(SOURCES src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ${GLM_LIBRARIES} ${GLFW_LIBRARIES} ${LIB_VULKAN})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${GLM_LIBRARIES} glfw3 ${LIB_VULKAN})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
