@@ -23,10 +23,11 @@ const std::vector<const char*> validationLayers = {
 
 struct QueueFamilyIndices{
     std::optional<uint32_t> graphicsFamily;
+    std::optional<uint32_t> presentFamily; // the queue families supporting commands and the ones supporting presentation may not overlap
 
     bool isComplete()
     {
-        return graphicsFamily.has_value();
+        return graphicsFamily.has_value() && presentFamily.has_value();
     }
 };
 
@@ -314,6 +315,14 @@ private:
                 indices.graphicsFamily = i;
             }
 
+            VkBool32 presentSupport = false;
+            vkGetPhysicalDeviceSurfaceSupportKHR(device, i, surface, &presentSupport);
+
+            if(presentSupport)
+            {
+                indices.presentFamily = i;
+            }
+
             if(indices.isComplete())
             {
                 break;
@@ -408,5 +417,6 @@ private:
     VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
     VkDevice device;
     VkQueue graphicsQueue;
+    VkQueue presentQueue;
     VkSurfaceKHR surface;
 };
