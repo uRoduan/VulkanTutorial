@@ -2,29 +2,32 @@
 // Created by Roduan on 2023/2/21.
 //
 
-#ifndef VULKANTUTORIAL_VMEMORYMANAGER_HPP
-#define VULKANTUTORIAL_VMEMORYMANAGER_HPP
+#ifndef VULKANTUTORIAL_MEMORYBLOCK_HPP
+#define VULKANTUTORIAL_MEMORYBLOCK_HPP
 
 #define GLFW_INCLUDE_VULKAN
 #include "GLFW/glfw3.h"
 
-struct Block
+namespace MyMemoryManager
 {
-    VkDeviceMemory memory;
-    VkDeviceSize offset;
-    VkDeviceSize size;
-    bool free;
-    void* ptr = nullptr;
+    struct Block
+    {
+        VkDeviceMemory memory;
+        VkDeviceSize offset;
+        VkDeviceSize size;
+        bool free;
+        void* ptr = nullptr;
 
-    bool operator==(Block const& block);
-};
+        bool operator==(Block const& block);
+    };
 
-bool Block::operator==(const Block &block) {
-    return (memory == block.memory &&
-            offset == block.offset &&
-            size == block.size &&
-            free == block.free &&
-            ptr == block.ptr);
+    bool Block::operator==(const Block &block) {
+        return (memory == block.memory &&
+                offset == block.offset &&
+                size == block.size &&
+                free == block.free &&
+                ptr == block.ptr);
+    }
 }
 
-#endif //VULKANTUTORIAL_VMEMORYMANAGER_HPP
+#endif //VULKANTUTORIAL_MEMORYBLOCK_HPP

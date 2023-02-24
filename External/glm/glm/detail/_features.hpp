@@ -203,7 +203,7 @@
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2752.htm
 
 //
-// Memory model	N2429	GCC 4.8
+// MemoryManager model	N2429	GCC 4.8
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2429.htm
 
 //
