@@ -60,6 +60,11 @@ struct UniformBufferObject{
     glm::mat4 proj;
 };
 
+struct TimePassColorUniformBufferObject
+{
+    glm::vec3 color;
+};
+
 const std::vector<Vertex> vertices = {
 //        {{0.0f, -0.5f}, {1.0f, 1.0f, 1.0f}},
 //        {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}},
@@ -236,17 +241,26 @@ private:
     void createUniformBuffers()
     {
         VkDeviceSize bufferSize = sizeof(UniformBufferObject);
+        VkDeviceSize timePassColorBufferSize = sizeof(TimePassColorUniformBufferObject);
 
-        uniformBuffers.resize(MAX_FRAMES_IN_FLIGHT);
-        uniformBuffersMemory.resize(MAX_FRAMES_IN_FLIGHT);
-        uniformBuffersMapped.resize(MAX_FRAMES_IN_FLIGHT);
+//        std::vector<VkDeviceSize> bufferSizes = {bufferSize};
+        std::vector<VkDeviceSize> bufferSizes = {bufferSize, timePassColorBufferSize};
 
-        for(size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
+        int BuffersCount = MAX_FRAMES_IN_FLIGHT * bufferSizes.size();
+
+        uniformBuffers.resize(BuffersCount);
+        uniformBuffersMemory.resize(BuffersCount);
+        uniformBuffersMapped.resize(BuffersCount);
+
+        for(size_t i = 0; i < bufferSizes.size(); i++)
         {
-            createBuffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, uniformBuffers[i], uniformBuffersMemory[i]);
+            for(size_t j = 0; j < MAX_FRAMES_IN_FLIGHT; j++)
+            {
+                size_t index = i * MAX_FRAMES_IN_FLIGHT + j;
+                createBuffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, uniformBuffers[index], uniformBuffersMemory[index]);
 
-            vkMapMemory(device, uniformBuffersMemory[i], 0, bufferSize, 0, &uniformBuffersMapped[i]);
-
+                vkMapMemory(device, uniformBuffersMemory[index], 0, bufferSize, 0, &uniformBuffersMapped[index]);
+            }
         }
     }
 
@@ -330,7 +344,7 @@ private:
     {
         VkDescriptorPoolSize poolSize{};
         poolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-        poolSize.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
+        poolSize.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT * 2);
 
         VkDescriptorPoolCreateInfo poolInfo{};
         poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
@@ -359,28 +373,56 @@ private:
             throw std::runtime_error("failed to allocate descriptor sets!");
         }
 
-        for(size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
+        std::vector<VkDeviceSize> bufferSizes = {sizeof(UniformBufferObject), sizeof(TimePassColorUniformBufferObject)};
+
+        for(size_t i = 0; i < bufferSizes.size(); i++)
         {
-            VkDescriptorBufferInfo bufferInfo{};
-            bufferInfo.buffer = uniformBuffers[i];
-            bufferInfo.offset = 0;
-            bufferInfo.range = sizeof(UniformBufferObject);
+            for(size_t j = 0; j < MAX_FRAMES_IN_FLIGHT; j++)
+            {
+                size_t index = i * MAX_FRAMES_IN_FLIGHT + j;
+                VkDescriptorBufferInfo bufferInfo{};
+                bufferInfo.buffer = uniformBuffers[index];
+                bufferInfo.offset = 0;
+                bufferInfo.range = bufferSizes[i];
 
-            VkWriteDescriptorSet descriptorWrite{};
-            descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-            descriptorWrite.dstSet = descriptorSets[i];
-            descriptorWrite.dstBinding = 0;
-            descriptorWrite.dstArrayElement = 0;
+                VkWriteDescriptorSet descriptorWrite{};
+                descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+                descriptorWrite.dstSet = descriptorSets[j];
+                descriptorWrite.dstBinding = i;
+                descriptorWrite.dstArrayElement = 0;
 
-            descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-            descriptorWrite.descriptorCount = 1;
+                descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+                descriptorWrite.descriptorCount = 1;
 
-            descriptorWrite.pBufferInfo = &bufferInfo;
-            descriptorWrite.pImageInfo = nullptr;
-            descriptorWrite.pTexelBufferView = nullptr;
+                descriptorWrite.pBufferInfo = &bufferInfo;
+                descriptorWrite.pImageInfo = nullptr;
+                descriptorWrite.pTexelBufferView = nullptr;
 
-            vkUpdateDescriptorSets(device, 1, &descriptorWrite, 0, nullptr);
+                vkUpdateDescriptorSets(device, 1, &descriptorWrite, 0, nullptr);
+            }
         }
+//        for(size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
+//        {
+//            VkDescriptorBufferInfo bufferInfo{};
+//            bufferInfo.buffer = uniformBuffers[i];
+//            bufferInfo.offset = 0;
+//            bufferInfo.range = sizeof(UniformBufferObject);
+//
+//            VkWriteDescriptorSet descriptorWrite{};
+//            descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+//            descriptorWrite.dstSet = descriptorSets[i];
+//            descriptorWrite.dstBinding = 0;
+//            descriptorWrite.dstArrayElement = 0;
+//
+//            descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+//            descriptorWrite.descriptorCount = 1;
+//
+//            descriptorWrite.pBufferInfo = &bufferInfo;
+//            descriptorWrite.pImageInfo = nullptr;
+//            descriptorWrite.pTexelBufferView = nullptr;
+//
+//            vkUpdateDescriptorSets(device, 1, &descriptorWrite, 0, nullptr);
+//        }
 
 
     }
@@ -489,7 +531,7 @@ private:
     {
         cleanupSwapChain();
 
-        for(size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
+        for(size_t i = 0; i < uniformBuffers.size(); i++)
         {
             vkDestroyBuffer(device, uniformBuffers[i], nullptr);
             vkFreeMemory(device, uniformBuffersMemory[i], nullptr);
@@ -1019,10 +1061,25 @@ private:
         uboLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
         uboLayoutBinding.pImmutableSamplers = nullptr;
 
+//        std::vector<VkDescriptorSetLayoutBinding> layoutBindings = {
+//                uboLayoutBinding
+//        };
+
+        VkDescriptorSetLayoutBinding timePassColorUboLayoutBinding{};
+        timePassColorUboLayoutBinding.binding = 1;
+        timePassColorUboLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+        timePassColorUboLayoutBinding.descriptorCount = 1;
+        timePassColorUboLayoutBinding.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+        timePassColorUboLayoutBinding.pImmutableSamplers = nullptr;
+
+        std::vector<VkDescriptorSetLayoutBinding> layoutBindings = {
+                uboLayoutBinding, timePassColorUboLayoutBinding
+        };
+
         VkDescriptorSetLayoutCreateInfo layoutInfo{};
         layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-        layoutInfo.bindingCount = 1;
-        layoutInfo.pBindings = &uboLayoutBinding;
+        layoutInfo.bindingCount = layoutBindings.size();
+        layoutInfo.pBindings = layoutBindings.data();
 
         if(vkCreateDescriptorSetLayout(device, &layoutInfo, nullptr, &descriptorSetLayout) != VK_SUCCESS)
         {
@@ -1325,7 +1382,13 @@ private:
         ubo.proj = glm::perspective(glm::radians(45.0f), swapChainExtent.width / (float) swapChainExtent.height, 0.1f, 10.0f);
         ubo.proj[1][1] *= -1;
 
-        memcpy(uniformBuffersMapped[currentImage], &ubo, sizeof(ubo));
+        memcpy(uniformBuffersMapped[currentImage + 0 * MAX_FRAMES_IN_FLIGHT], &ubo, sizeof(ubo));
+
+        TimePassColorUniformBufferObject colorUbo{};
+        double greyScale = abs(sin((double)time));
+        colorUbo.color = glm::vec3(greyScale, greyScale, greyScale);
+
+        memcpy(uniformBuffersMapped[currentImage + 1 * MAX_FRAMES_IN_FLIGHT], &colorUbo, sizeof(colorUbo));
     }
 
     void createSyncObjects()
