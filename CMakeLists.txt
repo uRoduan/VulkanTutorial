@@ -8,12 +8,13 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories($ENV{VK_SDK_PATH}\\Include)
 include_directories(external\\glm)
 include_directories(external\\glfw-3.3.8.bin.WIN64\\include)
+include_directories(external)
 
 link_directories($ENV{VK_SDK_PATH}\\Lib)
 link_directories(external\\glfw-3.3.8.bin.WIN64\\lib-vc2019)
 
 set(LIB_VULKAN $ENV{VK_SDK_PATH}\\Lib\\vulkan-1.lib)
-set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp)
+set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp include/stb_image.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
