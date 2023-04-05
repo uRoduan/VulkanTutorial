@@ -3,7 +3,10 @@ cmake_minimum_required(VERSION 3.10)
 project(VulkanTutorial)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+
+set(PROJECT_PATH ${PROJECT_SOURCE_DIR})
+ADD_DEFINITIONS( -D_PROJECT_PATH=\"${PROJECT_PATH}\" )
 
 include_directories($ENV{VK_SDK_PATH}\\Include)
 include_directories(external\\glm)
@@ -14,7 +17,8 @@ link_directories($ENV{VK_SDK_PATH}\\Lib)
 link_directories(external\\glfw-3.3.8.bin.WIN64\\lib-vc2019)
 
 set(LIB_VULKAN $ENV{VK_SDK_PATH}\\Lib\\vulkan-1.lib)
-set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp include/stb_image.h)
+set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp include/stb_image.h include/tiny_obj_loader.h)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
