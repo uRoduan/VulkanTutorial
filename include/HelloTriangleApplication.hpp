@@ -29,6 +29,8 @@
 
 #include <chrono>
 
+#include "VkUtility.hpp"
+
 #define CALL_VK(vkExpress) { \
 	VkResult result = vkExpress; \
 	if(result != VK_SUCCESS)    \
