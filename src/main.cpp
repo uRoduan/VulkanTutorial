@@ -16,8 +16,9 @@ int main() {
 
 
     // return EXIT_SUCCESS;
-    Application app(true);
+    Application app;
     app.InitWindow();
+    app.InitVulkanInstance();
     app.MainLoop();
     app.CleanUp();
     

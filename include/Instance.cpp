@@ -1,6 +1,7 @@
 #include <vector>
 
 #include "Instance.h"
+#include "Macros.h"
 #include "VkUtility.h"
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -12,10 +13,10 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL DebugCallback(VkDebugUtilsMessageSeverityF
     return VK_FALSE;
 }
 
-std::shared_ptr<Instance> Instance::Create(const VkInstanceCreateInfo& createInfo, bool enableValidationLayer)
+std::shared_ptr<Instance> Instance::Create(const VkInstanceCreateInfo& createInfo)
 {
     std::shared_ptr<Instance> pInstance = std::make_shared<Instance>();
-    if (pInstance.get() && pInstance->Init(createInfo, enableValidationLayer))
+    if (pInstance.get() && pInstance->Init(createInfo))
     {
         return pInstance;
     }
@@ -23,16 +24,11 @@ std::shared_ptr<Instance> Instance::Create(const VkInstanceCreateInfo& createInf
     return nullptr;
 }
 
-bool Instance::Init(const VkInstanceCreateInfo& createInfo, bool enableValidationLayer)
+bool Instance::Init(const VkInstanceCreateInfo& createInfo)
 {
     if(vkCreateInstance(&createInfo, nullptr, &m_vkInstance) != VK_SUCCESS)
     {
         return false;
-    }
-
-    if(enableValidationLayer)
-    {
-        VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
     }
 
     return true;
@@ -49,5 +45,13 @@ void Instance::LogVkSupportExtensions()
 
     for (const auto& extension: extensions) {
         std::cout << "\t" << extension.extensionName << "\n";
+    }
+}
+
+Instance::~Instance()
+{
+    if(m_vkInstance)
+    {
+        vkDestroyInstance(m_vkInstance, nullptr);
     }
 }

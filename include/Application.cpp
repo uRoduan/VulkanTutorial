@@ -14,6 +14,8 @@ void Application::InitWindow()
 
 void Application::InitVulkanInstance()
 {
+    assert(VkUtility::CheckValidationLayerSupport(validationLayers));
+
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     appInfo.pApplicationName = "Hello Triangle";
@@ -26,15 +28,20 @@ void Application::InitVulkanInstance()
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     createInfo.pApplicationInfo = &appInfo;
 
-    uint32_t glfwExtensionCount = 0;
-    const char** glfwExtensions;
-    glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
-    createInfo.enabledExtensionCount = glfwExtensionCount;
-    createInfo.ppEnabledExtensionNames = glfwExtensions;
+    auto requiredExtensions = VkUtility::GetRequiredExtensions();
+    createInfo.enabledExtensionCount = static_cast<uint32_t>(requiredExtensions.size());
+    createInfo.ppEnabledExtensionNames = requiredExtensions.data();
+#ifdef _DEBUG
+    createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+    createInfo.ppEnabledLayerNames = validationLayers.data();
+#else
     createInfo.enabledLayerCount = 0;
+#endif
 
-    m_instance = Instance::Create(createInfo, m_enableValidationLayer);
+    m_instance = Instance::Create(createInfo);
     assert(m_instance != nullptr);
+
+    m_instance->LogVkSupportExtensions();
 }
 
 void Application::MainLoop()
