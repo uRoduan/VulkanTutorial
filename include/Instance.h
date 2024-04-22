@@ -3,6 +3,9 @@
 #include <GLFW/glfw3.h>
 
 #include <memory>
+
+#include "Macros.h"
+
 class Instance
 {
 public:
@@ -15,5 +18,14 @@ public:
     ~Instance();
 
 private:
+    VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
+                                            const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
+    void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
+
+private:
     VkInstance m_vkInstance;
+
+#ifdef _DEBUG
+    VkDebugUtilsMessengerEXT m_debugMessenger;
+#endif
 };
