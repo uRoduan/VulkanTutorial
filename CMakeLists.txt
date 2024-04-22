@@ -17,12 +17,15 @@ link_directories($ENV{VK_SDK_PATH}\\Lib)
 link_directories(external\\glfw-3.3.8.bin.WIN64\\lib-vc2019)
 
 set(LIB_VULKAN $ENV{VK_SDK_PATH}\\Lib\\vulkan-1.lib)
-set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp
-	include/stb_image.h include/tiny_obj_loader.h include/HelloTriangleApplication.hpp include/VkUtility.h include/VkUtility.cpp include/Application.h include/Application.cpp
-	include/Instance.h include/Instance.cpp include/Macros.h)
+# set(SOURCES src/main.cpp include/MemoryManager/MemoryBlock.hpp include/MemoryManager/MemoryChunk.hpp
+# 	include/stb_image.h include/tiny_obj_loader.h include/HelloTriangleApplication.hpp include/VkUtility.h include/VkUtility.cpp include/Application.h include/Application.cpp
+# 	include/Instance.h include/Instance.cpp include/Macros.h)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+file(GLOB SOURCES src/*.cpp src/*.h scr/*.hpp)
+file(GLOB INCLUDES include/*.cpp include/*.hpp include/*.h)
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${GLM_LIBRARIES} glfw3 ${LIB_VULKAN})
 

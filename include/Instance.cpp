@@ -66,7 +66,7 @@ Instance::~Instance()
     if(m_vkInstance)
     {
 #ifdef _DEBUG
-    DestroyDebugUtilsMessengerEXT(m_vkInstance, m_debugMessenger, nullptr);
+        DestroyDebugUtilsMessengerEXT(m_vkInstance, m_debugMessenger, nullptr);
 #endif
         vkDestroyInstance(m_vkInstance, nullptr);
     }
