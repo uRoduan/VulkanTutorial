@@ -31,6 +31,25 @@ namespace VkUtility
         return true;
     }
 
+    
+    bool CheckDeviceExtensionsSupport(VkPhysicalDevice, const std::vector<const char*> &)
+    {
+        uint32_t extensionCount;
+        vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, nullptr);
+
+        std::vector<VkExtensionProperties> availableExtensions(extensionCount);
+        vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, availableExtensions.data());
+
+        std::set<std::string> requiredExtensions(deviceExtensions.begin(), deviceExtensions.end());
+
+        for(const auto& extension: availableExtensions)
+        {
+            requiredExtensions.erase(extension.extensionName);
+        }
+
+        return requiredExtensions.empty();
+    }
+
     std::vector<const char*> GetRequiredExtensions()
     {
         uint32_t glfwExtensionCount = 0;

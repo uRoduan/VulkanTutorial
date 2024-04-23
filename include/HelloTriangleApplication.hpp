@@ -533,7 +533,7 @@ private:
             descriptorWrites[1].descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
             descriptorWrites[1].descriptorCount = 1;
             descriptorWrites[1].pBufferInfo = &colorByTimeBufferInfo;
-            descriptorWrites[1].pImageInfo = nullptr;
+            descriptorWrites[1].pPhysicalDeviceImageInfo = nullptr;
             descriptorWrites[1].pTexelBufferView = nullptr;
 
             descriptorWrites[2].sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;

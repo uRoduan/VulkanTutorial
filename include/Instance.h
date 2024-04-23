@@ -17,6 +17,9 @@ public:
 
     ~Instance();
 
+    VkInstance GetDeviceHandle() { return m_vkInstance; }
+    const VkInstance GetDeviceHandle() const { return m_vkInstance; }
+
 private:
     VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
                                             const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
