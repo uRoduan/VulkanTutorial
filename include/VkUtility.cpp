@@ -32,7 +32,7 @@ namespace VkUtility
     }
 
     
-    bool CheckDeviceExtensionsSupport(VkPhysicalDevice, const std::vector<const char*> &)
+    bool CheckDeviceExtensionsSupport(VkPhysicalDevice device, const std::vector<const char*> & deviceExtensions)
     {
         uint32_t extensionCount;
         vkEnumerateDeviceExtensionProperties(device, nullptr, &extensionCount, nullptr);
