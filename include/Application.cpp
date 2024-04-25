@@ -34,14 +34,30 @@ void Application::InitVulkanInstance()
 #ifdef _DEBUG
     createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
     createInfo.ppEnabledLayerNames = validationLayers.data();
+
+    VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = {};
+    DebugMessengerExt::PopulateDebugMessagerCreateInfo(debugCreateInfo);
+    createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*)&debugCreateInfo;
 #else
     createInfo.enabledLayerCount = 0;
+    createInfo.pNext = nullptr;
 #endif
 
-    m_instance = Instance::Create(createInfo);
-    assert(m_instance != nullptr);
+    m_pInstance = Instance::Create(createInfo);
+    assert(m_pInstance != nullptr);
 
-    m_instance->LogVkSupportExtensions();
+#ifdef _DEBUG
+    m_debugMessenger = DebugMessengerExt::Create(debugCreateInfo, m_pInstance);
+#else
+    m_debugMessenger = nullptr;
+#endif
+
+    m_pInstance->LogVkSupportExtensions();
+}
+
+void Application::InitPhysicalDevice()
+{
+    m_pPhysicalDevice = PhysicalDevice::Create(m_pInstance);
 }
 
 void Application::MainLoop()

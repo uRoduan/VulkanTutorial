@@ -14,7 +14,7 @@ const std::vector<const char*> s_requiredDeviceExtensions = {
 class PhysicalDevice
 {
 public:
-    enum class QueueFamilyIndices
+    enum class QueueFamily
     {
         GRAPHICS,
 		COMPUTE,
@@ -26,20 +26,22 @@ public:
 
 public:
     bool Init(const std::shared_ptr<Instance>& pVulkanInstance);
-    ~PhysicalDevice();
+    uint32_t GetQueueFamilyIndex(QueueFamily queueFamliy) const { return m_queueFamilyIndices[(uint32_t)queueFamliy]; }
+    // ~PhysicalDevice();
 
 private:
     bool IsDeviceSuitable(VkPhysicalDevice device);
-    void FindQueueFamilies(VkPhysicalDevice device);
 
 private:
-    std::shared_ptr<Instance>			m_pVulkanInstance;
-    VkPhysicalDevice                    m_physicalDevice;
-    VkPhysicalDeviceProperties			m_physicalDeviceProperties;
-    VkPhysicalDeviceFeatures			m_physicalDeviceFeatures;
-    VkPhysicalDeviceMemoryProperties	m_physicalDeviceMemoryProperties;
+    std::shared_ptr<Instance>			    m_pVulkanInstance;
 
-	uint32_t							m_queueFamilyIndices[(uint32_t)QueueFamily::COUNT];
+    std::vector<VkQueueFamilyProperties>    m_queueProperties;
+    VkPhysicalDevice                        m_physicalDevice;
+    VkPhysicalDeviceProperties			    m_physicalDeviceProperties;
+    VkPhysicalDeviceFeatures			    m_physicalDeviceFeatures;
+    VkPhysicalDeviceMemoryProperties	    m_physicalDeviceMemoryProperties;
+
+	uint32_t							    m_queueFamilyIndices[(uint32_t)QueueFamily::COUNT];
 
     //todo: determine depth format from physical device
 };

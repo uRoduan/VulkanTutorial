@@ -21,14 +21,5 @@ public:
     const VkInstance GetDeviceHandle() const { return m_vkInstance; }
 
 private:
-    VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
-                                            const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
-    void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
-
-private:
     VkInstance m_vkInstance;
-
-#ifdef _DEBUG
-    VkDebugUtilsMessengerEXT m_debugMessenger;
-#endif
 };

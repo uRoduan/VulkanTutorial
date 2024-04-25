@@ -19,6 +19,7 @@ int main() {
     Application app;
     app.InitWindow();
     app.InitVulkanInstance();
+    app.InitPhysicalDevice();
     app.MainLoop();
     app.CleanUp();
     
