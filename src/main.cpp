@@ -19,7 +19,9 @@ int main() {
     Application app;
     app.InitWindow();
     app.InitVulkanInstance();
+    app.InitDebugMessenger();
     app.InitPhysicalDevice();
+    app.InitLogicalDevice();
     app.MainLoop();
     app.CleanUp();
     

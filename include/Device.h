@@ -14,6 +14,8 @@ public:
 public:
 	bool Init(const std::shared_ptr<Instance>& pInstance, const std::shared_ptr<PhysicalDevice>& pPhysicalDevice);
 
+	~Device();
+
 private:
 	VkDevice						  m_device;
 	std::shared_ptr<Instance>         m_pInstance;

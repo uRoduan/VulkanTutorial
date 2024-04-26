@@ -25,6 +25,7 @@
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\Surface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Application.h">
@@ -60,6 +61,7 @@
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\tiny_obj_loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Surface.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="E:\电棍 采样包\VulkanTutorial\CMakeLists.txt" />

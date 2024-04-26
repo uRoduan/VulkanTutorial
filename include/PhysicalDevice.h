@@ -27,6 +27,7 @@ public:
 public:
     bool Init(const std::shared_ptr<Instance>& pVulkanInstance);
     uint32_t GetQueueFamilyIndex(QueueFamily queueFamliy) const { return m_queueFamilyIndices[(uint32_t)queueFamliy]; }
+    VkPhysicalDevice GetDeviceHandle() const { return m_physicalDevice; }
     // ~PhysicalDevice();
 
 private:

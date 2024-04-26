@@ -46,18 +46,31 @@ void Application::InitVulkanInstance()
     m_pInstance = Instance::Create(createInfo);
     assert(m_pInstance != nullptr);
 
+    m_pInstance->LogVkSupportExtensions();
+}
+
+void Application::InitDebugMessenger()
+{
 #ifdef _DEBUG
+    VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo = {};
+    DebugMessengerExt::PopulateDebugMessagerCreateInfo(debugCreateInfo);
     m_debugMessenger = DebugMessengerExt::Create(debugCreateInfo, m_pInstance);
 #else
     m_debugMessenger = nullptr;
 #endif
-
-    m_pInstance->LogVkSupportExtensions();
 }
 
 void Application::InitPhysicalDevice()
 {
     m_pPhysicalDevice = PhysicalDevice::Create(m_pInstance);
+    assert(m_pPhysicalDevice != nullptr);
+}
+
+void Application::InitLogicalDevice()
+{
+    m_pDevice = Device::Create(m_pInstance, m_pPhysicalDevice);
+    assert(m_pDevice != nullptr);
+
 }
 
 void Application::MainLoop()

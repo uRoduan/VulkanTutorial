@@ -24,7 +24,9 @@ public:
     Application(){}
     void InitWindow();
     void InitVulkanInstance();
+    void InitDebugMessenger();
     void InitPhysicalDevice();
+    void InitLogicalDevice();
     void MainLoop();
     void CleanUp();
 
@@ -33,6 +35,7 @@ private:
 
     std::shared_ptr<Instance> m_pInstance;
     std::shared_ptr<PhysicalDevice> m_pPhysicalDevice;
+    std::shared_ptr<Device> m_pDevice;
 #ifdef _DEBUG
     std::shared_ptr<DebugMessengerExt> m_debugMessenger;
 #endif

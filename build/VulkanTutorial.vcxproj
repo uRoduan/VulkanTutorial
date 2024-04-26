@@ -317,8 +317,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\Surface.cpp" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\src\main.cpp" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Application.cpp" />
+    <ClInclude Include="..\include\Surface.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Application.h" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.cpp" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.h" />
