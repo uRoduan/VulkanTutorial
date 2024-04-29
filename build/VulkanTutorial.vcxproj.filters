@@ -13,10 +13,19 @@
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Device.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Instance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Surface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.cpp">
@@ -25,7 +34,6 @@
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\Surface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Application.h">
@@ -35,6 +43,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\HelloTriangleApplication.hpp">
@@ -49,6 +60,12 @@
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,7 +78,6 @@
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\tiny_obj_loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\Surface.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="E:\电棍 采样包\VulkanTutorial\CMakeLists.txt" />
