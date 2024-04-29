@@ -170,7 +170,7 @@ struct QueueFamilyIndices{
     }
 };
 
-struct SwapChainSupportDetails{
+struct SupportDetails{
     VkSurfaceCapabilitiesKHR capabilities;
     std::vector<VkSurfaceFormatKHR> formats;
     std::vector<VkPresentModeKHR> presentModes;
@@ -846,7 +846,7 @@ private:
         bool swapChainAdequate = false;
         if(extensionsSupported)
         {
-            SwapChainSupportDetails swapChainSupport = querySwapChainSupport(device);
+            SupportDetails swapChainSupport = querySwapChainSupport(device);
             swapChainAdequate = !swapChainSupport.formats.empty() && !swapChainSupport.presentModes.empty();
         }
 
@@ -922,9 +922,9 @@ private:
         return indices;
     }
 
-    SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device)
+    SupportDetails querySwapChainSupport(VkPhysicalDevice device)
     {
-        SwapChainSupportDetails details;
+        SupportDetails details;
 
         //This function takes the specified VkPhysicalDevice and VkSurfaceKHR window surface into account when determining the supported capabilities.
         //All of the support querying functions have these two as first parameters because they are the core components of the swap chain.
@@ -1054,7 +1054,7 @@ private:
 
     void createSwapChain()
     {
-        SwapChainSupportDetails swapChainSupport = querySwapChainSupport(physicalDevice);
+        SupportDetails swapChainSupport = querySwapChainSupport(physicalDevice);
 
         VkSurfaceFormatKHR surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats);
         VkPresentModeKHR presentMode = chooseSwapPresentMode(swapChainSupport.presentModes);

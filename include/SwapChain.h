@@ -3,20 +3,27 @@
 #include <GLFW/glfw3.h>
 
 #include <vector>
+#include <memory>
 
 #include "Macros.h"
+#include "DeviceObjectBase.h"
 
-struct SwapChainSupportDetails{
-    VkSurfaceCapabilitiesKHR capabilities;
-    std::vector<VkSurfaceFormatKHR> formats;
-    std::vector<VkPresentModeKHR> presentModes;
-};
 
-class SwapChain
-{
+
+class SwapChain: public DeviceObjectBase
+{  
 public:
-    static SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice);
+    static std::shared_ptr<SwapChain> Create(std::shared_ptr<Device> pDevice);
 
 public:
+    bool Init(std::shared_ptr<Device> pDevice);
 
+    ~SwapChain();
+
+private:
+    VkSwapchainKHR m_swapChain;
+    VkFormat m_swapChainImageFormat;
+    VkExtent2D m_swapChainExtent;
+
+    std::vector<VkImage> m_swapChainImages;
 };

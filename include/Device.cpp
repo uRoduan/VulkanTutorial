@@ -44,8 +44,8 @@ bool Device::Init(const std::shared_ptr<Instance>& pInstance, const std::shared_
 	createInfo.pQueueCreateInfos = queueCreateInfos.data();
 	createInfo.queueCreateInfoCount = (uint32_t)queueCreateInfos.size();
 	// todo: set device extensions here
-	/*createInfo.ppEnabledExtensionNames = s_requiredDeviceExtensions.data();
-	createInfo.enabledExtensionCount = (uint32_t)s_requiredDeviceExtensions.size();*/
+	createInfo.ppEnabledExtensionNames = s_requiredDeviceExtensions.data();
+	createInfo.enabledExtensionCount = (uint32_t)s_requiredDeviceExtensions.size();
 	createInfo.pEnabledFeatures = &deviceFeatures;
 
 	if (vkCreateDevice(m_pPhysicalDevice->GetDeviceHandle(), &createInfo, nullptr, &m_device) != VK_SUCCESS)

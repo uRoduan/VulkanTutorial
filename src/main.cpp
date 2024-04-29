@@ -20,8 +20,11 @@ int main() {
     app.InitWindow();
     app.InitVulkanInstance();
     app.InitDebugMessenger();
+    //app.InitSurface();
     app.InitPhysicalDevice();
     app.InitLogicalDevice();
+    app.InitQueue();
+    app.InitSwapChain();
     app.MainLoop();
     app.CleanUp();
     

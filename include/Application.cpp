@@ -60,9 +60,15 @@ void Application::InitDebugMessenger()
 #endif
 }
 
+//void Application::InitSurface()
+//{
+//    VkResult result = glfwCreateWindowSurface(m_pInstance->GetDeviceHandle(), m_window, nullptr, &m_surface);
+//    assert(result == VK_SUCCESS);
+//}
+
 void Application::InitPhysicalDevice()
 {
-    m_pPhysicalDevice = PhysicalDevice::Create(m_pInstance);
+    m_pPhysicalDevice = PhysicalDevice::Create(m_pInstance, m_window);
     assert(m_pPhysicalDevice != nullptr);
 }
 
@@ -70,7 +76,20 @@ void Application::InitLogicalDevice()
 {
     m_pDevice = Device::Create(m_pInstance, m_pPhysicalDevice);
     assert(m_pDevice != nullptr);
+}
 
+void Application::InitQueue()
+{
+    for (int i = 0; i < (uint32_t)PhysicalDevice::QueueFamily::COUNT; i++)
+    {
+        m_queues[i] = Queue::Create(m_pDevice, (PhysicalDevice::QueueFamily)i);
+    }
+}
+
+void Application::InitSwapChain()
+{
+    m_pSwapChain = SwapChain::Create(m_pDevice);
+    assert(m_pSwapChain != nullptr);
 }
 
 void Application::MainLoop()
