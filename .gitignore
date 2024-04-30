@@ -400,3 +400,4 @@ FodyWeavers.xsd
 .idea/*
 [Bb]uild
 cmake-build-debug-visual-studio/
+.vscode/
