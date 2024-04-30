@@ -5,7 +5,6 @@
 #include <vector>
 #include <memory>
 
-#include "Macros.h"
 #include "DeviceObjectBase.h"
 #include "ImageView.h"
 

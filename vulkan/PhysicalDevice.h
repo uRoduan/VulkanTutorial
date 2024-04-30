@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "Instance.h"
-#include "Macros.h"
 
 class PhysicalDevice
 {

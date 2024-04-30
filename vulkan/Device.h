@@ -3,7 +3,6 @@
 #include <GLFW/glfw3.h>
 #include <memory>
 
-#include "Instance.h"
 #include "PhysicalDevice.h"
 
 const std::vector<const char*> s_requiredDeviceExtensions = {
