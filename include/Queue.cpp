@@ -2,18 +2,18 @@
 
 std::shared_ptr<Queue> Queue::Create(const std::shared_ptr<Device>& pDevice, PhysicalDevice::QueueFamily queueFamily)
 {
-	std::shared_ptr<Queue> queue = std::make_shared<Queue>();
-	if (queue.get() && queue->Init(pDevice, queueFamily))
+	std::shared_ptr<Queue> pQueue = std::make_shared<Queue>();
+	if (pQueue.get() && pQueue->Init(pDevice, queueFamily, pQueue))
 	{
-		return queue;
+		return pQueue;
 	}
 
 	return nullptr;
 }
 
-bool Queue::Init(const std::shared_ptr<Device>& pDevice, PhysicalDevice::QueueFamily queueFamily)
+bool Queue::Init(const std::shared_ptr<Device>& pDevice, PhysicalDevice::QueueFamily queueFamily, const std::shared_ptr<Queue>& pQueue)
 {
-	if (!DeviceObjectBase::Init(pDevice))
+	if (!DeviceObjectBase::Init(pDevice, pQueue))
 	{
 		return false;
 	}

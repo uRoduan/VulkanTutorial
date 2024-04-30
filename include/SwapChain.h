@@ -7,16 +7,15 @@
 
 #include "Macros.h"
 #include "DeviceObjectBase.h"
+#include "ImageView.h"
 
-
-
-class SwapChain: public DeviceObjectBase
+class SwapChain: public DeviceObjectBase<SwapChain>
 {  
 public:
     static std::shared_ptr<SwapChain> Create(std::shared_ptr<Device> pDevice);
 
 public:
-    bool Init(std::shared_ptr<Device> pDevice);
+    bool Init(std::shared_ptr<Device> pDevice, std::shared_ptr<SwapChain> pSelf);
 
     ~SwapChain();
 
@@ -26,4 +25,5 @@ private:
     VkExtent2D m_swapChainExtent;
 
     std::vector<VkImage> m_swapChainImages;
+    std::vector<std::shared_ptr<ImageView>> m_swapChainImageViews;
 };

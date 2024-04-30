@@ -327,6 +327,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.cpp" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\HelloTriangleApplication.hpp" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Image.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Image.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.h" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Instance.cpp" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Instance.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Macros.h" />
@@ -334,6 +338,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.h" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Queue.cpp" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Queue.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.h" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Surface.cpp" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Surface.h" />
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.cpp" />
@@ -342,6 +348,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\stb_image.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\tiny_obj_loader.h" />
+    <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.frag">
+    </None>
+    <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.vert">
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="E:\电棍 采样包\VulkanTutorial\build\ZERO_CHECK.vcxproj">

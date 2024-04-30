@@ -16,6 +16,12 @@
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Instance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -23,6 +29,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Surface.cpp">
@@ -51,6 +60,12 @@
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\HelloTriangleApplication.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Instance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +76,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Surface.h">
@@ -83,8 +101,19 @@
     <CustomBuild Include="E:\电棍 采样包\VulkanTutorial\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.vert">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Filter Include="Header Files">
       <UniqueIdentifier>{84AB33AA-5A05-378A-A934-7659A8B3466D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{97100F3E-9A54-388D-8D11-CD138B9A3C65}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{557413FC-CF70-3F79-BCB4-2C4B344AD761}</UniqueIdentifier>

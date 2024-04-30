@@ -83,6 +83,7 @@ void Application::InitQueue()
     for (int i = 0; i < (uint32_t)PhysicalDevice::QueueFamily::COUNT; i++)
     {
         m_queues[i] = Queue::Create(m_pDevice, (PhysicalDevice::QueueFamily)i);
+        assert(m_queues[i] != nullptr);
     }
 }
 

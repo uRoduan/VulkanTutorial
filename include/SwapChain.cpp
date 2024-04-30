@@ -3,7 +3,7 @@
 std::shared_ptr<SwapChain> SwapChain::Create(std::shared_ptr <Device> pDevice)
 {
     std::shared_ptr<SwapChain> pSwapChain = std::make_shared<SwapChain>();
-    if (pSwapChain.get() && pSwapChain->Init(pDevice))
+    if (pSwapChain.get() && pSwapChain->Init(pDevice, pSwapChain))
     {
         return pSwapChain;
     }
@@ -11,9 +11,12 @@ std::shared_ptr<SwapChain> SwapChain::Create(std::shared_ptr <Device> pDevice)
     return nullptr;
 }
 
-bool SwapChain::Init(std::shared_ptr<Device> pDevice)
+bool SwapChain::Init(std::shared_ptr<Device> pDevice, std::shared_ptr<SwapChain> pSelf)
 {
-    DeviceObjectBase::Init(pDevice);
+    if (!DeviceObjectBase::Init(pDevice, pSelf))
+    {
+        return false;
+    }
 
     std::shared_ptr<PhysicalDevice> pPhysicalDevice = pDevice->GetPhysicalDevice();
     const VkSurfaceCapabilitiesKHR& capabilities = pPhysicalDevice->GetSurfaceCapabilities();
@@ -65,10 +68,35 @@ bool SwapChain::Init(std::shared_ptr<Device> pDevice)
     m_swapChainImages.resize(swapChainImageCount);
     vkGetSwapchainImagesKHR(pDevice->GetDeviceHandle(), m_swapChain, &swapChainImageCount, m_swapChainImages.data());
 
+    m_swapChainImageViews.resize(swapChainImageCount);
+    for (size_t i = 0; i < swapChainImageCount; i++)
+    {
+        VkImageViewCreateInfo imageViewCreateInfo{};
+        imageViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+        imageViewCreateInfo.image = m_swapChainImages[i];
+        imageViewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+        imageViewCreateInfo.format = m_swapChainImageFormat;
+        imageViewCreateInfo.components.r = VK_COMPONENT_SWIZZLE_IDENTITY;
+        imageViewCreateInfo.components.g = VK_COMPONENT_SWIZZLE_IDENTITY;
+        imageViewCreateInfo.components.b = VK_COMPONENT_SWIZZLE_IDENTITY;
+        imageViewCreateInfo.components.a = VK_COMPONENT_SWIZZLE_IDENTITY;
+        imageViewCreateInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        imageViewCreateInfo.subresourceRange.baseMipLevel = 0;
+        imageViewCreateInfo.subresourceRange.levelCount = 1;
+        imageViewCreateInfo.subresourceRange.baseArrayLayer = 0;
+        imageViewCreateInfo.subresourceRange.layerCount = 1;
+
+        m_swapChainImageViews[i] = ImageView::Create(pDevice, imageViewCreateInfo);
+        assert(m_swapChainImageViews[i] != nullptr);
+    }
+
     return true;
 }
 
 SwapChain::~SwapChain()
 {
-    vkDestroySwapchainKHR(m_pDevice->GetDeviceHandle(), m_swapChain, nullptr);
+    if (m_swapChain)
+    {
+        vkDestroySwapchainKHR(m_pDevice->GetDeviceHandle(), m_swapChain, nullptr);
+    }
 }
