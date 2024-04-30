@@ -318,40 +318,40 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\src\main.cpp" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Application.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Application.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Device.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Device.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\HelloTriangleApplication.hpp" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Image.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Image.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Instance.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Instance.h" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Macros.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Queue.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Queue.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Surface.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Surface.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.h" />
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.cpp" />
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\stb_image.h" />
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\tiny_obj_loader.h" />
     <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.frag">
     </None>
     <None Include="E:\电棍 采样包\VulkanTutorial\shaders\shader.vert">
     </None>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Application.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Application.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\DebugMessengerExt.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\DebugMessengerExt.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Device.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Device.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\DeviceObjectBase.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\DeviceObjectBase.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Image.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Image.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\ImageView.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\ImageView.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Instance.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Instance.h" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Macros.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\PhysicalDevice.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\PhysicalDevice.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Queue.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Queue.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\SelfRefBase.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\SelfRefBase.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Surface.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Surface.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\SwapChain.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\SwapChain.h" />
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\VkUtility.cpp" />
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\VkUtility.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="E:\电棍 采样包\VulkanTutorial\build\ZERO_CHECK.vcxproj">

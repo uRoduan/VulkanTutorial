@@ -4,90 +4,48 @@
     <ClCompile Include="E:\电棍 采样包\VulkanTutorial\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Application.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Application.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\DebugMessengerExt.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Device.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Device.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\DeviceObjectBase.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Image.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Image.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\ImageView.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Instance.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Instance.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\PhysicalDevice.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Queue.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Queue.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\SelfRefBase.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\Surface.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\Surface.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\SwapChain.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="E:\电棍 采样包\VulkanTutorial\vulkan\VkUtility.cpp">
+      <Filter>Vulkan</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DebugMessengerExt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Device.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\DeviceObjectBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\HelloTriangleApplication.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\ImageView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Instance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Macros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\PhysicalDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SelfRefBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\Surface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\SwapChain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\VkUtility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\stb_image.h">
@@ -95,6 +53,48 @@
     </ClInclude>
     <ClInclude Include="E:\电棍 采样包\VulkanTutorial\include\tiny_obj_loader.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Application.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\DebugMessengerExt.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Device.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\DeviceObjectBase.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Image.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\ImageView.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Instance.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Macros.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\PhysicalDevice.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Queue.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\SelfRefBase.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\Surface.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\SwapChain.h">
+      <Filter>Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\电棍 采样包\VulkanTutorial\vulkan\VkUtility.h">
+      <Filter>Vulkan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,9 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{557413FC-CF70-3F79-BCB4-2C4B344AD761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vulkan">
+      <UniqueIdentifier>{6A561E83-4E6A-3CD8-AB4C-23394D8CCB98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

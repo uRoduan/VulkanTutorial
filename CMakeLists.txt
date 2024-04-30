@@ -16,16 +16,19 @@ include_directories(external)
 link_directories($ENV{VK_SDK_PATH}\\Lib)
 link_directories(external\\glfw-3.3.8.bin.WIN64\\lib-vc2019)
 
+set(LIB_VULKAN $ENV{VK_SDK_PATH}\\Lib\\vulkan-1.lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
+
 file(GLOB SHADERS shaders/*.vert shaders/*.frag)
 source_group("Shaders" FILES ${SHADERS})
 
-set(LIB_VULKAN $ENV{VK_SDK_PATH}\\Lib\\vulkan-1.lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/bin)
+file(GLOB VULKAN vulkan/*.cpp vulkan/*.h )
+source_group("Vulkan" FILES ${VULKAN})
 
 file(GLOB SOURCES src/*.cpp src/*.h scr/*.hpp)
 file(GLOB INCLUDES include/*.cpp include/*.hpp include/*.h)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${INCLUDES} ${SHADERS})
+add_executable(${PROJECT_NAME} ${SOURCES} ${INCLUDES} ${SHADERS} ${VULKAN})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${GLM_LIBRARIES} glfw3 ${LIB_VULKAN})
 
