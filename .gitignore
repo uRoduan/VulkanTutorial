@@ -401,3 +401,4 @@ FodyWeavers.xsd
 [Bb]uild
 cmake-build-debug-visual-studio/
 .vscode/
+CMakeFiles/
